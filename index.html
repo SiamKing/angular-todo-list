@@ -6,8 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>To Do List</title>
 </head>
-<body>
-    
+<body ng-app="todoApp">
 
+    <div ng-controller="ListController as vm">
+        <h1>{{ vm.list.name }}</h1>
+        <ul>
+            <li ng-repeat="task in vm.list.tasks">{{ task.name }} - completed: {{ task.complete }}</li>
+        </ul>
+    </div>
+
+
+
+    <script src="./js/angular.js"></script>
+    <script src="./js/app/app.js"></script>
+    <script src="./js/app/list/list.controller.js"></script>
 </body>
 </html>

@@ -30,11 +30,11 @@
 
         <!-- tasks -->
 
-        <div ng-repeat="task in vm.list.tasks | orderBy: 'id'">
+        <div ng-repeat="task in vm.list.tasks | orderBy: '$index'">
 
             <div ng-show="vm.isInReadMode(task.id)">
                 <p>
-                    #{{ task.id }} {{ task.name }} - completed: {{ task.complete }}
+                    {{$index + 1}}: {{ task.name }} - completed: {{ task.complete }}
                 </p>
 
                 <!-- task options -->

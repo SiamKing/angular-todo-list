@@ -8,7 +8,6 @@ function ListController() {
     var addFlag = false;
     var editFlag = false;
     var removeFlag = false;
-    var rings = [];
 
     vm.currentTask = {};
     vm.errorMessage = '';
@@ -22,6 +21,7 @@ function ListController() {
     vm.isInRemoveMode = isInRemoveMode;
     vm.add = add;
     vm.save = save;
+    vm.remove = remove;
 
     vm.list = {
         name: 'Saturday Chores',
@@ -99,15 +99,20 @@ function ListController() {
     function save() {
         for (var i = 0; i < vm.list.tasks.length; i++) {
             if (vm.list.tasks[i].id == selectedId) {
-                vm.list.tasks[i].name = vm.currentTask.name
-                vm.list.tasks[i].complete = vm.currentTask.complete
+                vm.list.tasks[i].name = vm.currentTask.name;
+                vm.list.tasks[i].complete = vm.currentTask.complete;
                 reset();
             }
         }
     }
 
     function remove(id) {
-
+        for (var i = 0; i < vm.list.tasks.length; i++) {
+            if (vm.list.tasks[i].id == id) {
+                vm.list.tasks.splice(i, 1);
+                reset();
+            }
+        }
     }
 
     function isInReadMode(id) {
